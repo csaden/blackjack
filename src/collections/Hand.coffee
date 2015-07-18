@@ -2,11 +2,17 @@ class window.Hand extends Backbone.Collection
   model: Card
 
   initialize: (array, @deck, @isDealer) ->
+    @checkBlackJack()
+
+  checkBlackJack: ->
+    # if @bestScore() is 21
+    a = 5
+    @trigger 'blackJack'
 
   hit: ->
     @add(@deck.pop())
     if @isDealer then @checkScore()
-    else @checkBust()
+    else @hasBusted()
 
   # function for testing purposes
   addCard: (card)->
@@ -26,13 +32,13 @@ class window.Hand extends Backbone.Collection
     score + if card.get 'revealed' then card.get 'value' else 0
   , 0
 
-  checkBust: ->
-    if @minScore > 21 
+  hasBusted: ->
+    if @minScore() > 21 
       @bust()
       true
   
   checkScore: ->
-    if @checkBust()
+    if @hasBusted()
     else if @bestScore() > 16 then @stand()
     else @hit()
 
