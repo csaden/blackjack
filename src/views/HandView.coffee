@@ -8,9 +8,8 @@ class window.HandView extends Backbone.View
     @render()
 
   render: ->
-    @$el.children().detach()
+    @$el.children().remove()
     @$el.html @template @collection
     @$el.append @collection.map (card) ->
       new CardView(model: card).$el
     @$('.score').text @collection.scores()[0]
-
