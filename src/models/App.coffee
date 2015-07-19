@@ -6,10 +6,12 @@ class window.App extends Backbone.Model
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
     @get('playerHand').on('stand', @dealerGo, @)
-    @get('playerHand').on('blackJack', @gameOver, @)
-      # () =>
-      # alert('BlackJack!')
-      # @gameOver.call(@))
+    @get('playerHand').on('blackJack', () =>
+      alert('BlackJack!')
+      @gameOver.call(@))
+    @get('dealerHand').on('blackJack', () =>
+      alert('BlackJack!')
+      @gameOver.call(@))
     @get('playerHand').on('bust', () => 
       @get('dealerHand').at(0).flip()
       @gameOver.call(@))
@@ -18,6 +20,7 @@ class window.App extends Backbone.Model
   dealerGo: ->
     @get('dealerHand').at(0).flip()
     @get('dealerHand').checkScore()
+    
 
   gameOver: ->
     playerScore = @get('playerHand').bestScore()

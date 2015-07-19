@@ -1,12 +1,16 @@
 class window.CardView extends Backbone.View
-  className: 'card'
+  className: 'card-container'
 
-  template: _.template '<%= rankName %> of <%= suitName %>'
+  template: _.template '<div class="card flipped">
+                        <img class="card-front" src="img/cards/<%= rankName %>-<%= suitName %>.png"/>
+                        <img class="card-back" src="img/card-back.png"/>
+                        </div>'
 
   initialize: -> @render()
 
   render: ->
     @$el.children().detach()
     @$el.html @template @model.attributes
-    @$el.addClass 'covered' unless @model.get 'revealed'
-
+    # if not @model.get 'revealed'
+    #   @$el.find('.card').toggleClass('flipped')
+    # if not @model.get 'revealed' then $el.attr('src', 'img/card-back.png')

@@ -2,12 +2,9 @@ class window.Hand extends Backbone.Collection
   model: Card
 
   initialize: (array, @deck, @isDealer) ->
-    @checkBlackJack()
 
   checkBlackJack: ->
-    # if @bestScore() is 21
-    a = 5
-    @trigger 'blackJack'
+    if @bestScore() is 21 and @length is 2 then @trigger 'blackJack'
 
   hit: ->
     @add(@deck.pop())

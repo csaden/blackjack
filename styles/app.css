@@ -1,16 +1,178 @@
-.card {
-  float: left;
-  border: solid 1px black;
-  width: 100px;
-  border-radius: 5px;
-  height: 140px;
-  margin-right: 20px;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-.covered {
-  background-color: black;
+@font-face {
+  font-family: blackJack;
+  src: url(blackJack.ttf);
+}
+
+
+body {
+  background-image: url("blackjack-table.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: 16px;
+  /*width: 100%;*/
+  /*position: relative;*/
+}
+
+h2 {
+  font-size: 1.7em;
+  font-family: blackJack;
+  height: auto;
+  padding: 1% 0;
+  color: white;
+}
+
+.card-container {
+  width: 120px;
+  height: 167px;
+  position: relative;
+  display: inline-block;
+  margin-right: 15px;
+  -webkit-perspective: 800px;
+  perspective: 1200px;
+}
+
+.card {
+  display: inline-block;
+  /*border: solid 1px #222;*/
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  /*height: 139px;*/
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: transform 1s;
+  transition: transform 1s;
+  margin-right: 20px;
+  -webkit-box-shadow: 1.5px 1.5px 3px #222;
+  box-shadow: 1.5px 1.5px 3px #222;
+}
+
+.game-container {
+  width: 600px;
+  margin: 120px auto 0 auto;
+
+}
+
+.player-hand-container,
+.dealer-hand-container {
+  /*height: 200px;*/
+  /*padding-top: 5%;*/
+}
+
+.button-container {
+  
 }
 
 .hand {
   overflow: auto;
+  width: 580px;
+  height: auto;
+  margin: 0 auto;
+  padding-left: 100px;
+  padding-bottom: 50px;
 }
+
+.card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  /*height: auto;*/
+}
+
+.card-front {
+}
+
+.card-back {
+  -webkit-transform: rotateY(180deg);  
+  transform: rotateY(180deg);
+}
+
+.flipped {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+button {
+  margin-top: 2%;
+  font-family: blackJack;
+  font-size: 1.2em; 
+  height: 40px;
+  width: 80px;
+  border: 0;
+  padding: 0;
+  margin-right: 15px;
+  color: #DDD;
+  border-radius: 5px;
+  background-color: #039BE5;
+  -webkit-box-shadow: 3px 3px 2px #111;
+  box-shadow: 3px 3px 2px #111;
+  /*box-shadow: 3px 3px 5px 6px #111;*/
+}
+
+button:hover {
+  background-color: #0288D1;
+}
+
+button:active {
+  background-color: #0277BD
+}
+
+button:focus {
+  outline: 0;
+}
+
+
